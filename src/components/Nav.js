@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
+import {Link} from 'react-router-dom';
 
 
 const NavStyled = styled.nav`
@@ -28,25 +29,33 @@ const NavStyled = styled.nav`
         margin: 0 2rem;
         position:relative;       
         letter-spacing: 0.5rem; 
+        z-index: 3;
     }
 
-    a::after{
-        left: 0;
-        content: '';
-        display : block;
+    a::before {  
+        transform: scaleX(0);
+        transform-origin: bottom right;
+    }
+
+    a.active::before {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+
+    a::before {
+        content: " ";
+        display: block;
         position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        inset: 0 0 0 0;
         background-image: linear-gradient(to right, #097679 , #00d4ff);
-        color: blue;
-        width: 0%;
-        height: 0.2rem;
-        transition: all 0.2s cubic-bezier(.65, -0.3, .5, 1.25);
+        z-index: -1;
+        transition: transform .3s cubic-bezier(.65, -0.3, .5, 1.25);
     }
 
-    a.active{
-        &::after{       
-            width: 110%;
-        }
-
+    a {
+        position: relative;        
+        color: white;
     }
 `;
 
@@ -63,10 +72,9 @@ const Nav = () => {
         <NavStyled>
             <h1>Logotype</h1>
             <ul ref={ulRef}>
-                <li><a href="#" onClick={(e) => toggleMenuActive(e)} className='active'>HTML</a> </li>
-                <li><a href="#" onClick={(e) => toggleMenuActive(e)} >CSS</a> </li>
-                <li><a href="#" onClick={(e) => toggleMenuActive(e)} >JavaScript</a> </li>
-                <li><a href="#" onClick={(e) => toggleMenuActive(e)} >Python</a></li>
+                <li><Link to="/" onClick={(e) => toggleMenuActive(e)}>About Us</Link> </li>
+                <li><Link to="/work" onClick={(e) => toggleMenuActive(e)} >Our Work</Link> </li>
+                <li><Link to="/contact" onClick={(e) => toggleMenuActive(e)} >Contact</Link> </li>                
             </ul>     
         </NavStyled>
      );
