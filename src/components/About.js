@@ -1,8 +1,10 @@
 import React  from 'react';
-import homewebp from './../img/homewebp.webp';
+import home1 from './../img/home1.png';
 import styled from 'styled-components';
+import { motion } from "framer-motion";
+import Wave from './Wave';
 
-const AboutStyled = styled.div`
+const AboutStyled = styled(motion.div)`
     display: flex;    
 
     justify-content: center;
@@ -16,6 +18,8 @@ const AboutStyled = styled.div`
 `;
 
 const TitleStyled = styled.div`
+    position: relative;
+    z-index: 2;
     padding: 1rem;
     & p {
         font-size: 1.4rem;
@@ -23,34 +27,67 @@ const TitleStyled = styled.div`
     }
 `;
 
+const Hide = styled.div`
+    overflow: hidden;
+`;
+
 const ImgStyled = styled.div`    
     overflow: hidden;     
 `;
 
-const Img = styled.img`
+const Img = styled(motion.img)`
+    position: relative;
+    z-index: 2;
     width: 80%;
     object-fit: contain;
 `;
 
+const animateTitle = {
+    hidden: {  y: 200  },
+    show: { 
+        y : 0,
+        transition:{ duration: 0.75, ease: 'easeOut'}
+    }    
+}
+
+const animateText = {
+    hidden: {opacity: 0},
+    show: { opacity: 1, transition:{ duration: 0.75}},
+}
+
+const animtaImg = {
+    hidden : {scale: 2.5, opacity : 0},
+    show : {
+        scale: 1, 
+        opacity : 1,
+        transition: {duration: 0.75}
+    },
+}
+
 const About = () => {
     return ( 
         <AboutStyled className="description">
-            <TitleStyled className="title">
-                <div className="hide">
-                    <h2>We work to make</h2>
-                </div>
-                <div className="hide">
-                    <h2>your <span>dreams</span> dreams come</h2>
-                </div>
-                <div className="hide">
-                    <h2>true</h2>
-                </div>
-                <p>Contac us for ideas you have </p>
-                <button>Contact</button>
+            <Wave></Wave>
+            <TitleStyled className="title">            
+                    <Hide>
+                        <motion.h2 
+                            variants={animateTitle}>We work to make</motion.h2>
+                    </Hide>
+                    <Hide>
+                        <motion.h2 
+                            variants={animateTitle}>your <span>dreams</span> dreams come</motion.h2>
+                    </Hide>
+                    <Hide>
+                        <motion.h2 
+                            variants={animateTitle}>true</motion.h2>
+                    </Hide>
+                <motion.p
+                    variants={animateText}>Contac us for ideas you have </motion.p>
+                <motion.button variants={animateText}>Contact</motion.button>
             </TitleStyled>             
-            <ImgStyled className="image">
-                <Img src={homewebp} alt="Laptop on table."/>    
-            </ImgStyled>           
+            <ImgStyled>
+                <Img variants={animtaImg} src={home1} alt="Laptop on table."/>    
+            </ImgStyled>             
         </AboutStyled>
     );
 }
