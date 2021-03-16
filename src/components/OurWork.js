@@ -30,9 +30,7 @@ const Line = styled.div`
 const OurWork = () => {
     
     const [movies, setMovies] = useState(MovieState);
-
-    console.log(movies);
-
+   
     return ( 
         <WorkStyled>
             {

@@ -60,12 +60,10 @@ const WorkDetail = () => {
     useEffect(() => {
         setMovie(movies.filter(movieItem => movieItem.url === url)[0]);
     }, [url, movies]);
-    
-    console.log(movie);
-
+       
     return ( 
         <>
-        {movie.awards &&
+        {movie && movie.awards &&
         (<WorkStyled>
             <Movie>
                 <MovieHead>
@@ -77,10 +75,11 @@ const WorkDetail = () => {
                     <h3>Awards</h3>
                     <AwardsContainer>
                         {
-                        movie.awards.map((item) => (
-                            <Award 
-                                title={item.title}
-                                description={item.description}></Award>
+                            movie.awards.map((item, key) => (
+                                <Award 
+                                    key={key}
+                                    title={item.title}
+                                    description={item.description}></Award>
                         ))}
                     </AwardsContainer>                    
                 </Awards> 
