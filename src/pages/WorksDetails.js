@@ -9,7 +9,7 @@ const WorksDetails = () => {
             variants={pageTransition}
             initial="hidden"
             animate="show"
-            exit="exit">           
+            exit="exit">            
             <WorkDetail></WorkDetail>
         </motion.div>
     );
