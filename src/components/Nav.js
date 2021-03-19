@@ -4,6 +4,10 @@ import {Link, useLocation} from 'react-router-dom';
 
 
 const NavStyled = styled.nav`
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 10;
     display:flex;
     justify-content: space-between;    
     padding: 2rem;   
@@ -77,8 +81,7 @@ const Nav = () => {
     const ulRef = useRef(null);
     const {pathname} = useLocation();    
 
-    useEffect(() => {
-        console.log(pathname);
+    useEffect(() => {        
         toggleMenuActive();
     }, [pathname])
 
