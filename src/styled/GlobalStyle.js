@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
     body{
         background-color: #344759;      
         font-family: 'Poppins', sans-serif;
+        overflow-x: hidden;
     }
     
     button{
@@ -50,12 +51,6 @@ const GlobalStyle = createGlobalStyle`
     }
     a:visited{
         color: white;
-    }
-
-    @media only screen and (max-width: 830px) {
-        nav > h1:nth-child(1) {
-            display: none;
-        }
     }
 `;
 
