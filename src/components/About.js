@@ -86,7 +86,7 @@ const About = () => {
                 <motion.button variants={animateText}>Contact</motion.button>
             </TitleStyled>             
             <ImgStyled>
-                <Img variants={animtaImg} src={home1} alt="Laptop on table."/>    
+                <Img variants={animtaImg} initial='hidden' animate='show' src={home1} alt="Laptop on table."/>    
             </ImgStyled>             
         </AboutStyled>
     );
