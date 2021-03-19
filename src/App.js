@@ -5,6 +5,7 @@ import GlobalStyle from './styled/GlobalStyle';
 import Nav from './components/Nav';
 import WorksDetails from './pages/WorksDetails';
 import MovieProvider from './hooks/movieContext.js'
+import ScrollToTop from './hooks/useScrollToTop';
 
 //Router
 import { Switch, Route, useLocation} from 'react-router-dom';
@@ -14,13 +15,12 @@ import {AnimatePresence} from 'framer-motion'
 
 function App() {
 
-    let location = useLocation();   
-
-    console.log(location);
+    let location = useLocation();      
 
     return (
         <div className="App">
             <GlobalStyle></GlobalStyle>
+            <ScrollToTop/>    
             <Nav></Nav>
             <MovieProvider>
                 <AnimatePresence exitBeforeEnter>
