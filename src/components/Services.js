@@ -3,6 +3,7 @@ import laptop from './../img/laptop.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock, faMoneyBill, faUsers, faArchive   } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
+import {FadeInWhenVisible} from './../hooks/useVisible';
 
 const ServicesStyled = styled.div`
     display: flex;  
@@ -49,46 +50,48 @@ const IconStyled = styled.div`
 
 const Services = () => {
     return (
-        <ServicesStyled>   
-            <ServicesDesc>
-                <div className="title">
-                    <h2>High <span>quality</span> service</h2>
-                </div>          
-                <CardsStyled>
-                    <CardStyled>
-                        <IconStyled>
-                            <FontAwesomeIcon icon={faClock} />
-                            <h3>Efficiency</h3>
-                        </IconStyled>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                    </CardStyled>                                
-                    <CardStyled>
-                        <IconStyled>
-                            <FontAwesomeIcon icon={faMoneyBill} />
-                            <h3>Affordable</h3>
-                        </IconStyled>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                    </CardStyled>                                
-                    <CardStyled>
-                        <IconStyled>
-                            <FontAwesomeIcon icon={faUsers} />
-                            <h3>Work Group</h3>
-                        </IconStyled>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                    </CardStyled>                                
-                    <CardStyled>
-                        <IconStyled>
-                            <FontAwesomeIcon icon={faArchive} />
-                            <h3>Security</h3>
-                        </IconStyled>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                    </CardStyled>                                
-                </CardsStyled>
-            </ServicesDesc>
-            <ServicesImage>
-                <Img src={laptop} alt="Laptop on table."/>    
-            </ServicesImage> 
-        </ServicesStyled>
+        <FadeInWhenVisible>
+            <ServicesStyled>   
+                <ServicesDesc>
+                    <div className="title">
+                        <h2>High <span>quality</span> service</h2>
+                    </div>          
+                    <CardsStyled>
+                        <CardStyled>
+                            <IconStyled>
+                                <FontAwesomeIcon icon={faClock} />
+                                <h3>Efficiency</h3>
+                            </IconStyled>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                        </CardStyled>                                
+                        <CardStyled>
+                            <IconStyled>
+                                <FontAwesomeIcon icon={faMoneyBill} />
+                                <h3>Affordable</h3>
+                            </IconStyled>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                        </CardStyled>                                
+                        <CardStyled>
+                            <IconStyled>
+                                <FontAwesomeIcon icon={faUsers} />
+                                <h3>Work Group</h3>
+                            </IconStyled>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                        </CardStyled>                                
+                        <CardStyled>
+                            <IconStyled>
+                                <FontAwesomeIcon icon={faArchive} />
+                                <h3>Security</h3>
+                            </IconStyled>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                        </CardStyled>                                
+                    </CardsStyled>
+                </ServicesDesc>
+                <ServicesImage>
+                    <Img src={laptop} alt="Laptop on table."/>    
+                </ServicesImage> 
+            </ServicesStyled>
+        </FadeInWhenVisible>
     );
 }
  
