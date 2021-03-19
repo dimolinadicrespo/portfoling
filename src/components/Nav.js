@@ -1,12 +1,11 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 
 
 const NavStyled = styled.nav`
     display:flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    justify-content: space-between;    
     padding: 2rem;   
     background-color: #40586f;
     
@@ -57,24 +56,49 @@ const NavStyled = styled.nav`
         position: relative;        
         color: white;
     }
+
+    @media(max-width: 830px) {
+        h1 {
+            display: none;
+        }
+        justify-content : center;
+    }
+
+    @media(max-width: 600px){
+        ul {
+            flex-direction: column;
+        }      
+    }
+
 `;
 
 const Nav = () => {
 
     const ulRef = useRef(null);
+    const {pathname} = useLocation();    
 
-    const toggleMenuActive = (e) => {        
-        ulRef.current.childNodes.forEach(item => item.firstChild.classList.remove('active'));
-        e.target.classList.add('active');
+    useEffect(() => {
+        console.log(pathname);
+        toggleMenuActive();
+    }, [pathname])
+
+    const toggleMenuActive = () => {        
+        ulRef.current.childNodes.forEach(item => {
+            if (item.firstElementChild.pathname === pathname) {
+                item.firstElementChild.classList.toggle('active'); 
+            } else {
+                item.firstElementChild.classList.remove('active');
+            }
+        });        
     }
 
     return ( 
         <NavStyled>
             <h1>Logotype</h1>
             <ul ref={ulRef}>
-                <li><Link to="/" onClick={(e) => toggleMenuActive(e)}>About Us</Link> </li>
-                <li><Link to="/work" onClick={(e) => toggleMenuActive(e)} >Our Work</Link> </li>
-                <li><Link to="/contact" onClick={(e) => toggleMenuActive(e)} >Contact</Link> </li>                
+                <li><Link to="/">About Us</Link> </li>
+                <li><Link to="/work">Our Work</Link> </li>
+                <li><Link to="/contact">Contact</Link> </li>                
             </ul>     
         </NavStyled>
      );
